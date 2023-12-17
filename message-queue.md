@@ -14,3 +14,7 @@
    The system should be highly available for receiving and sending messages. It should continue operating uninterrupted, even after one or more of its components fail.
 4. Performance
    High throughput and low latency
+
+## Considerations of a distributed messaging queue’s design
+1. Ordering of messages
+   best effort ordering or strict ordering
