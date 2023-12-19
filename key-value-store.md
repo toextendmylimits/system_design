@@ -29,4 +29,8 @@ get/put
   R = A read quorum of size R. For a read operation to be considered as successful, read operation must wait for responses from at least R replicas.
 
   If W + R > N, strong consistency is guaranteed because there must be at least one overlapping node that has the latest data to ensure consistency.
+4. Consistency model
+  1. Strong consistency: any read operation returns a value corresponding to the result of the most updated write data item. A client never sees out-of-date data.
+  1. Weak consistency: subsequent read operations may not see the most updated value.
+  1. Eventual consistency: this is a specific form of weak consistency. Given enough time, all updates are propagated, and all replicas are consistent.
   
