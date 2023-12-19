@@ -26,5 +26,7 @@ get/put
 
    N = The number of replicas  
   W = A write quorum of size W. For a write operation to be considered as successful, write operation must be acknowledged from W replicas.  
-  R = A read quorum of size R. For a read operation to be considered as successful, read operation must wait for responses from at least R replicas.  
+  R = A read quorum of size R. For a read operation to be considered as successful, read operation must wait for responses from at least R replicas.
+
+  If W + R > N, strong consistency is guaranteed because there must be at least one overlapping node that has the latest data to ensure consistency.
   
