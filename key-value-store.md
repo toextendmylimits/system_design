@@ -23,4 +23,8 @@ get/put
 
 3. Consistency
    Since data is replicated at multiple nodes, it must be synchronized across replicas. Quorum consensus can guarantee consistency for both read and write operation
+
+   N = The number of replicas  
+  W = A write quorum of size W. For a write operation to be considered as successful, write operation must be acknowledged from W replicas.  
+  R = A read quorum of size R. For a read operation to be considered as successful, read operation must wait for responses from at least R replicas.  
   
