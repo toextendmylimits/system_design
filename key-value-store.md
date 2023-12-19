@@ -9,19 +9,19 @@ get/put
 5. Tunable consistency.
 
 ## Key system components
-1. Data partitition  
+### Data partitition  
   There are two challenges while partitioning the data:
   1.Distribute data across multiple servers evenly.
   1.Minimize data movement when nodes are added or removed.  
    
    Consistent hashing
    
-2. Data replication  
+### Data replication  
    To achieve high availability and reliability, data must be replicated asynchronously over N servers, where N is a configurable parameter.  
 
    With virtual nodes, the first N nodes on the ring may be owned by fewer than N physical servers. To avoid this issue, we only choose unique servers while performing the clockwise walk logic.
 
-3. Consistency  
+### Consistency  
    Since data is replicated at multiple nodes, it must be synchronized across replicas. Quorum consensus can guarantee consistency for both read and write operation
 
    N = The number of replicas  
@@ -30,11 +30,11 @@ get/put
 
   If W + R > N, strong consistency is guaranteed because there must be at least one overlapping node that has the latest data to ensure consistency.
   
-4. Consistency model  
+1. Consistency model  
    1. Strong consistency: any read operation returns a value corresponding to the result of the most updated write data item. A client never sees out-of-date data.
    1. Weak consistency: subsequent read operations may not see the most updated value.
    1. Eventual consistency: this is a specific form of weak consistency. Given enough time, all updates are propagated, and all replicas are consistent.
 
-5. Inconsistency resolution
+2. Inconsistency resolution
    Data Versioning
   
