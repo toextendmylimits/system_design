@@ -40,7 +40,7 @@ get/put
 
 ### Handling failures
   1. Failure detection
-     A better solution is to use decentralized failure detection methods like gossip protocol. Gossip protocol works as follows:
+     A better solution is to use decentralized failure detection methods like gossip protocol. Gossip protocol works as follows:  
      Each node maintains a node membership list, which contains member IDs and heartbeat counters.  
      Each node periodically increments its heartbeat counter.  
      Each node periodically sends heartbeats to a set of random nodes, which in turn propagate to another set of nodes.  
