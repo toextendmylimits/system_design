@@ -16,5 +16,8 @@ get/put
    
    Consistent hashing
    
-3. Data replication
+2. Data replication
+   To achieve high availability and reliability, data must be replicated asynchronously over N servers, where N is a configurable parameter.  
+
+   With virtual nodes, the first N nodes on the ring may be owned by fewer than N physical servers. To avoid this issue, we only choose unique servers while performing the clockwise walk logic.
   
