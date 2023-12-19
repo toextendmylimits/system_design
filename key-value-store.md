@@ -39,7 +39,7 @@ get/put
    Data Versioning
 
 ### Handling failures
-  1. Failure detection
+  1. Failure detection  
      A better solution is to use decentralized failure detection methods like gossip protocol. Gossip protocol works as follows:  
      Each node maintains a node membership list, which contains member IDs and heartbeat counters.  
      Each node periodically increments its heartbeat counter.  
