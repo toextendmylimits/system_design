@@ -1,5 +1,5 @@
 # Design a distributed key value store
-## Functional requirement
+## Requirement
 get/put
 
 1. Ability to store big data.
@@ -7,3 +7,14 @@ get/put
 3. High scalability: The system can be scaled to support large data set.
 4. Low latency
 5. Tunable consistency.
+
+## Key system components
+1. Data partitition
+  There are two challenges while partitioning the data:
+  1.Distribute data across multiple servers evenly.
+  1.Minimize data movement when nodes are added or removed.  
+   
+   Consistent hashing
+   
+3. Data replication
+  
