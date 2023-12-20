@@ -13,3 +13,5 @@
 1. On client side
 2. On server side
 3. As middleware
+
+## High-level design
