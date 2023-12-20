@@ -9,3 +9,7 @@
 1. Availability: Essentially, the rate limiter protects our system. Therefore, it should be highly available.
 1. Low latency: Because all API requests pass through the rate limiter, it should work with a minimum latency without affecting the user experience.
 1. Scalability: Our design should be highly scalable. It should be able to rate limit an increasing number of clients’ requests over time.
+### Where to place the rate limiter
+1. On client side
+2. On server side
+3. As middleware
