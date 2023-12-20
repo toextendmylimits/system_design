@@ -21,3 +21,9 @@
    302 redirect - temporary redirect
 
 3. Links will expire after a standard default time span.
+
+### Non-functional requirement
+1. The system should be highly available. This is really important to consider because if the service goes down, all the URL redirection will start failing.
+1. Scalability: Our system should be horizontally scalable with increasing demand.
+1. URL redirection should happen in real-time with minimal latency.
+1. Shortened links should not be predictable.
