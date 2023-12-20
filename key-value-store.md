@@ -39,7 +39,7 @@ get/put
    Data Versioning
 
 ### Handling failures
-  1. Failure detection
+1. Failure detection
 
    In a distributed system, it is insufficient to believe that a server is down because another server says so. Usually, it requires at least two independent sources of information to mark a server down.  
      
@@ -50,4 +50,6 @@ get/put
      Once nodes receive heartbeats, membership list is updated to the latest info.  
       
      If the heartbeat has not increased for more than predefined periods, the member is considered as offline.  
-    
+
+2. Handle temporary failure
+3. Handle permanent failure
