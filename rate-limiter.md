@@ -15,3 +15,4 @@
 3. As middleware
 
 ## High-level design
+Refer to https://www.educative.io/courses/grokking-modern-system-design-interview-for-engineers-managers/design-of-a-rate-limiter
