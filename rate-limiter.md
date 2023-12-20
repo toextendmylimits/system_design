@@ -23,3 +23,12 @@ https://bytebytego.com/courses/system-design-interview/design-a-rate-limiter
 
 3. Synchronization issue  
  Centralized data store like Redis
+
+## Algorithms
+1. Token bucket algorithm
+2. Leaking bucket algorithm
+ When a request arrives, the system checks if the queue is full. If it is not full, the request is added to the queue.  
+ Otherwise, the request is dropped.  
+ Requests are pulled from the queue and processed at regular intervals.
+3. Fixed window counter algorithm
+4. Sliding window log algorithm
