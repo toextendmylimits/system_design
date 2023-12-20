@@ -52,4 +52,8 @@ get/put
      If the heartbeat has not increased for more than predefined periods, the member is considered as offline.  
 
 2. Handle temporary failure
-3. Handle permanent failure
+A technique called “sloppy quorum” [4] is used to improve availability. Instead of enforcing the quorum requirement, the system chooses the first W healthy servers for writes and first R healthy servers for reads on the hash ring. Offline servers are ignored.
+
+If a server is unavailable due to network or server failures, another server will process requests temporarily. When the down server is up, changes will be pushed back to achieve data consistency. This process is called hinted handoff. Since s2 is unavailable in Figure 12, reads and writes will be handled by s3 temporarily. When s2 comes back online, s3 will hand the data back to s2.  
+
+4. Handle permanent failure
