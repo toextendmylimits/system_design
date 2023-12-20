@@ -36,8 +36,8 @@ Storage/Query Rate/Bandwith
 Let’s assume our service has 30M new URL shortenings per month. Let’s assume we store every URL shortening request (and associated shortened link) for 5 years. For this period the service will generate about 1.8 B records. 30 million * 5 years * 12 months = 1.8 B
 
 Consider the average long URL size of 2KB ie for 2048 characters.
-Short URL size: 17 Bytes for 17 characters
-created_at- 7 bytes
-expiration_length_in_minutes -7 bytes
+Short URL size: 17 Bytes for 17 characters  
+created_at- 7 bytes  
+expiration_length_in_minutes -7 bytes  
 
 Total storage per month 30 million * 2kB = 60 GB, so each year, 0.7 TB, and 5 years 3.5 GB.
