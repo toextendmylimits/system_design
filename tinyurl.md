@@ -1,4 +1,6 @@
 # Url shortening service
+Refer https://www.geeksforgeeks.org/system-design-url-shortening-service/
+
 ## Requirement
 ### Functional requirement
 1. Url shortening
