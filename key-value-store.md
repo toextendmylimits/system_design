@@ -39,7 +39,10 @@ get/put
    Data Versioning
 
 ### Handling failures
-  1. Failure detection  
+  1. Failure detection
+
+   In a distributed system, it is insufficient to believe that a server is down because another server says so. Usually, it requires at least two independent sources of information to mark a server down.  
+     
      A better solution is to use decentralized failure detection methods like gossip protocol. Gossip protocol works as follows:  
      Each node maintains a node membership list, which contains member IDs and heartbeat counters.  
      Each node periodically increments its heartbeat counter.  
