@@ -16,3 +16,10 @@
 
 ## High-level design
 Refer to https://www.educative.io/courses/grokking-modern-system-design-interview-for-engineers-managers/design-of-a-rate-limiter
+https://bytebytego.com/courses/system-design-interview/design-a-rate-limiter
+
+1. Race condition
+ Locks are the most obvious solution for solving race condition. However, locks will significantly slow down the system. Two strategies are commonly used to solve the problem: Lua script [13] and sorted sets data structure in Redis
+
+3. Synchronization issue  
+ Centralized data store like Redis
