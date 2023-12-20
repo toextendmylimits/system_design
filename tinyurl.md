@@ -41,3 +41,12 @@ created_at- 7 bytes
 expiration_length_in_minutes -7 bytes  
 
 Total storage per month 30 million * 2kB = 60 GB, so each year, 0.7 TB, and 5 years 3.5 GB.
+
+## APIs
+1. Shortening a URL  
+   shortURL(api_dev_key, original_url, custom_alias=None, expiry_date=None)
+3. Redirecting a short URL
+   redirectURL(api_dev_key, url_key)
+1. Deleting a short URL
+   deleteURL(api_dev_key, url_key)
+
