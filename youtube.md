@@ -22,6 +22,6 @@
     1. Reliability: Content uploaded to the system should not be lost or damaged.
 
 ## Resource estimation
-1. Storage
+1. Storage  
 Let's assume the daily active users are 5 million, 10% of users upload video one day, each user watchs 5 videos, each video is 300MB, then total daily storage is 5 million * 10 % * 300M = 150 TB
 
