@@ -16,7 +16,7 @@ Storage/QPS/Bandwith/Number of servers
 https://www.educative.io/courses/grokking-modern-system-design-interview-for-engineers-managers/design-of-a-distributed-search  
 
 1. Crawler
-2. Indexer
-Index and Revert Index
+2. Indexer  
+Index and Revert Index  
 The indexer uses a distributed data processing system like MapReduce for parallel and distributed index construction.
 4. Searcher
