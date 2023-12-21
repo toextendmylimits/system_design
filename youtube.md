@@ -1,12 +1,12 @@
 # Design youtube
 ## Requirement
 1. Functional requirements
-  1. Stream videos
-  1. Upload videos
-  1. Search videos according to titles
-  1. Like and dislike videos
-  1. Add comments to videos
-  1. View thumbnails
+    1. Stream videos
+    1. Upload videos
+    1. Search videos according to titles
+    1. Like and dislike videos
+    1. Add comments to videos
+    1. View thumbnails
 1. Non-functional requirements
 It’s important that our system also meets the following requirements:
 
