@@ -25,3 +25,6 @@
 1. Storage  
 Let's assume the daily active users are 5 million, 10% of users upload video one day, each user watchs 5 videos, each video is 300MB, then total daily storage is 5 million * 10 % * 300M = 150 TB
 
+## High-level design
+https://www.educative.io/courses/grokking-modern-system-design-interview-for-engineers-managers/design-of-youtube
+
