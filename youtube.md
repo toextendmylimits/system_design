@@ -40,3 +40,6 @@ https://www.educative.io/courses/grokking-modern-system-design-interview-for-eng
 3. Search videos  
     The /searchVideo API uses the GET method:
       searchVideo(user_id, search_string, length, quality, upload_date)
+
+## Storage schema
+User/Video/Comment
