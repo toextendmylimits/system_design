@@ -27,3 +27,5 @@ The two most common techniques used for data partitioning in distributed indexin
 
 1. Document partitioning: In document partitioning, all the documents collected by the web crawler are partitioned into subsets of documents. Each node then performs indexing on a subset of documents that are assigned to it.
 1. Term partitioning: The dictionary of all terms is partitioned into subsets, with each subset residing at a single node. For example, a subset of documents is processed and indexed by a node containing the term “search.”
+
+### Data replication
