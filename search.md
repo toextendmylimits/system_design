@@ -8,3 +8,6 @@
     1. Scalability: The system should have the ability to scale with the increasing amount of data. In other words, it should be able to index a large amount of data.
     1. Fast search on big data: The user should get the results quickly, no matter how much content they are searching.
     1. Reduced cost: The overall cost of building a search system should be less.
+  
+## Resource estimation
+Storage/QPS/Bandwith/Number of servers
