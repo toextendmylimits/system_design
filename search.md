@@ -20,3 +20,10 @@ https://www.educative.io/courses/grokking-modern-system-design-interview-for-eng
 Index and Revert Index  
 The indexer uses a distributed data processing system like MapReduce for parallel and distributed index construction.
 4. Searcher
+
+## Detailed discussion
+### Distributed indexing and searching
+The two most common techniques used for data partitioning in distributed indexing are these below:
+
+1. Document partitioning: In document partitioning, all the documents collected by the web crawler are partitioned into subsets of documents. Each node then performs indexing on a subset of documents that are assigned to it.
+1. Term partitioning: The dictionary of all terms is partitioned into subsets, with each subset residing at a single node. For example, a subset of documents is processed and indexed by a node containing the term “search.”
