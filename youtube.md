@@ -28,3 +28,15 @@ Let's assume the daily active users are 5 million, 10% of users upload video one
 ## High-level design
 https://www.educative.io/courses/grokking-modern-system-design-interview-for-engineers-managers/design-of-youtube
 
+## APIs
+1. Upload video  
+    The POST method can upload a video to the /uploadVideo API:      
+    uploadVideo(user_id, video_file, category_id, title, description, tags, default_language, privacy_settings)
+
+2. Stream video
+    The GET method is best suited for the /streamVideo API:      
+    streamVideo(user_id, video_id, screen_resolution, user_bitrate, device_chipset)
+
+3. Search videos  
+    The /searchVideo API uses the GET method:
+      searchVideo(user_id, search_string, length, quality, upload_date)
