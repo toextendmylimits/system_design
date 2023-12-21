@@ -11,3 +11,11 @@
   
 ## Resource estimation
 Storage/QPS/Bandwith/Number of servers
+
+## High-level design
+https://www.educative.io/courses/grokking-modern-system-design-interview-for-engineers-managers/design-of-a-distributed-search  
+
+1. Crawler
+2. Indexer
+Index and Revert Index
+3. Searcher
