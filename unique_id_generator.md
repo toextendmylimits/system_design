@@ -28,7 +28,7 @@
    1. IDs do not go up with time.
    1. IDs could be non-numeric.
       
-1. Twitter snowflake
+1. Twitter snowflake  
    1 bit sign bit. Reserved for future purpose. Can be used to distinguish between signed and unsigned number  
    41 bit timestamp, roughly 2 trillion, can be used for 70 years. Each year has roughly 30 billion milliseconds.  
    5 bit data center  
