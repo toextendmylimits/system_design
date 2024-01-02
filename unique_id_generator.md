@@ -8,11 +8,13 @@
 1. SQL database auto-increment feature
    1. Single database server
    1. Have k databases servers, each one generate id with auto increment of k. For example, if k is 2, server 1 generate id 1, 3, 5, while server 2 generated id 2, 4, 6
-
-   Disadvantages:
-   1. IDs don't go up with time across multiple servers
-   2. Hard to scale with multiple data centers
-   3. It doesn't scale well when a server is added or removed
+      Pros:
+      Easy to implement.
+      
+      Disadvantages:
+      1. IDs don't go up with time across multiple servers
+      2. Hard to scale with multiple data centers
+      3. It doesn't scale well when a server is added or removed
   
 1. UUID  
    UUID is a 128-bit number used to identify information in computer systems. UUID has a very low probability of getting collusion.
