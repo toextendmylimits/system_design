@@ -2,7 +2,7 @@
 ## Clarifying questions
 1. Are these IDs numeric?
 2. How long is the ID?
-3. Does the ID get increased by time, for example, the ID generated in the evening is larger than ID generated in the morning on the same day?
+3. Does the ID get increased by time, for example, the ID generated in the evening is larger than ID generated in the morning on the same day?  Are the IDs ordered by date?  
 4. What's the scale of the system, like how many IDs the system can generate in a second?
 ## Design
 1 bit sign bit. Reserved for future purpose. Can be used to distinguish between signed and unsigned number  
