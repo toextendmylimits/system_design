@@ -5,6 +5,25 @@
 3. Does the ID get increased by time, for example, the ID generated in the evening is larger than ID generated in the morning on the same day?  Are the IDs ordered by date?  
 4. What's the scale of the system, like how many IDs the system can generate in a second?
 ## Design
+1. SQL database auto-increment feature
+   Have k databases servers, each one generate id with auto increment of k. For example, if k is 2, server 1 generate id 1, 3, 5, while server 2 generated id 2, 4, 6
+
+   Disadvantages:
+   1. IDs don't go up with time across multiple servers
+   2. Hard to scale with multiple data centers
+   3. It doesn't scale well when a server is added or removed
+  
+1. UUID  
+   UUID is a 128-bit number used to identify information in computer systems. UUID has a very low probability of getting collusion.
+   
+   Pros:
+   1. Generating UUID is simple. No coordination between servers is needed so there will not be any synchronization issues.
+   1. The system is easy to scale because each web server is responsible for generating IDs they consume. ID generator can easily scale with web servers.
+
+   Cons: 
+   1. IDs are 128 bits long, but our requirement is 64 bits.  
+   1. IDs do not go up with time.
+   1. IDs could be non-numeric.
 1 bit sign bit. Reserved for future purpose. Can be used to distinguish between signed and unsigned number  
 41 bit timestamp, roughly 2 trillion, can be used for 70 years. Each year has roughly 30 billion milliseconds.  
 5 bit data center  
