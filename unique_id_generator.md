@@ -27,11 +27,20 @@
    1. IDs are 128 bits long, but our requirement is 64 bits.  
    1. IDs do not go up with time.
    1. IDs could be non-numeric.
-1 bit sign bit. Reserved for future purpose. Can be used to distinguish between signed and unsigned number  
-41 bit timestamp, roughly 2 trillion, can be used for 70 years. Each year has roughly 30 billion milliseconds.  
-5 bit data center  
-5 bit machines  
-12 bits sequence number  
+      
+1. Twitter snowflake
+   1 bit sign bit. Reserved for future purpose. Can be used to distinguish between signed and unsigned number  
+   41 bit timestamp, roughly 2 trillion, can be used for 70 years. Each year has roughly 30 billion milliseconds.  
+   5 bit data center  
+   5 bit machines  
+   12 bits sequence number
+
+   Pros#
+   1. Twitter Snowflake uses the time stamp as the first component. Therefore, they’re time sortable. The ID generator is highly available as well.
+
+   Cons
+   1. IDs generated in a dead period are a problem. The dead period is when no request for generating an ID is made to the server. These IDs will be wasted since they take up identifier space. The unique range possible will deplete earlier than expected and create gaps in our global set of user IDs.
+      
 ## Extra to discuss
 1. Clock synchronization.
    In our design, we assume ID generation servers have the same clock. This assumption might not be true when a server is running on multiple cores. The same challenge exists in multi-machine scenarios. Solutions to clock synchronization are out of the scope of this course; however, it is important to understand the problem exists. Network Time Protocol is the most popular solution to this problem.
