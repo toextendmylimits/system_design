@@ -6,7 +6,8 @@
 4. What's the scale of the system, like how many IDs the system can generate in a second?
 ## Design
 1. SQL database auto-increment feature
-   Have k databases servers, each one generate id with auto increment of k. For example, if k is 2, server 1 generate id 1, 3, 5, while server 2 generated id 2, 4, 6
+   1. Single database server
+   1. Have k databases servers, each one generate id with auto increment of k. For example, if k is 2, server 1 generate id 1, 3, 5, while server 2 generated id 2, 4, 6
 
    Disadvantages:
    1. IDs don't go up with time across multiple servers
