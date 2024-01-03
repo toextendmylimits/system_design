@@ -2,6 +2,16 @@
 Refer https://www.geeksforgeeks.org/system-design-url-shortening-service/
 
 ## Requirement
+## Clarifying questions?
+1. What is the key requirement? Is it to create alias of a long url with shorter length, and when clicking on the short url, it will be redirected to the original long url?
+2. Hong long is the short url?
+3. What characters are allowed in the shortened url? Is it safe to assume combinations of numbers 0 - 9 and lowercase and upperase alphabetic letters, i.e. a-z A-Z?
+4. What is the traffic volume, such as how many short URLs to generate in a day?
+
+## Resource Estimation
+If we assume 100million URLs are generated a day, then writing query per second is 100 million / 86400 seconds = 1160 per second. 
+Assume ratio of read operation to write operation is 10, then read operation per second is 11600
+If average URL length is 1000, and we store URL for 10 years. Then total storage for 10 years is: 10years * 365day * 100million * 1000Bytes = 365TB
 ### Functional requirement
 1. Url shortening
     POST api/v1/data/shorten
