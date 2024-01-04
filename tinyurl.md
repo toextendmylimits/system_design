@@ -8,12 +8,20 @@ Refer https://www.geeksforgeeks.org/system-design-url-shortening-service/
 3. What characters are allowed in the shortened url? Is it safe to assume combinations of numbers 0 - 9 and lowercase and upperase alphabetic letters, i.e. a-z A-Z?
 4. What is the traffic volume, such as how many short URLs to generate in a day?
 
-## Resource Estimation
+### Non-functional requirement
+1. The system should be highly available. This is really important to consider because if the service goes down, all the URL redirection will start failing.
+1. Scalability: Our system should be horizontally scalable with increasing demand.
+1. URL redirection should happen in real-time with minimal latency.
+1. Shortened links should not be predictable.
+
+### Resource estimation
 If we assume 100million URLs are generated a day, aaverage URL length is 1000 characters, and we store URL for 10 years.
 1. Write operation per second is 100 million / 86400 seconds = 1160 per second. 
 2. Assume ratio of read operation to write operation is 10, then read operation per second is 11600
 3. Then total storage for 10 years is: 10years * 365day * 100million * 1000Bytes = 365TB
-### Functional requirement
+
+## Design
+###  API
 1. Url shortening
     POST api/v1/data/shorten
    
@@ -40,29 +48,15 @@ If we assume 100million URLs are generated a day, aaverage URL length is 1000 ch
 
 3. Links will expire after a standard default time span.
 
-### Non-functional requirement
-1. The system should be highly available. This is really important to consider because if the service goes down, all the URL redirection will start failing.
-1. Scalability: Our system should be horizontally scalable with increasing demand.
-1. URL redirection should happen in real-time with minimal latency.
-1. Shortened links should not be predictable.
+### Hash function URL encoder
+We can use hash algorithm like MD5 and SHA1 but the hash value is very long and it could have hash collision as well.
 
-### Capacity estimation
-Storage/Query Rate/Bandwith
+Base62 conversion
+To generate a uinqure id, and then convert it to a base 62 number.
 
-Let’s assume our service has 30M new URL shortenings per month. Let’s assume we store every URL shortening request (and associated shortened link) for 5 years. For this period the service will generate about 1.8 B records. 30 million * 5 years * 12 months = 1.8 B
+### Database
+The data we need to store is the long url and its mapping short urls. The data doesn't have strong strong relationship, so no need to use a structured SQL database. And there could be a lot of records to store, so the database needs to be horizontically scalable. The database read operation could be heavy as well. So Non SQL database MongoDB is a good choice for the following reasons:
+1. It uses leader-follower protocol, making it possible to use replicas for heavy reading.
+1. MongoDB ensures atomicity in concurrent write operations and avoids collisions by returning duplicate-key errors for record-duplication issues.
 
-Consider the average long URL size of 2KB ie for 2048 characters.
-Short URL size: 17 Bytes for 17 characters  
-created_at- 7 bytes  
-expiration_length_in_minutes -7 bytes  
-
-Total storage per month 30 million * 2kB = 60 GB, so each year, 0.7 TB, and 5 years 3.5 GB.
-
-## APIs
-1. Shortening a URL  
-   shortURL(api_dev_key, original_url, custom_alias=None, expiry_date=None)
-3. Redirecting a short URL
-   redirectURL(api_dev_key, url_key)
-1. Deleting a short URL
-   deleteURL(api_dev_key, url_key)
 
