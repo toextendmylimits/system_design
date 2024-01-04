@@ -30,8 +30,12 @@ If we assume 100million URLs are generated a day, aaverage URL length is 1000 ch
 2. Url redirecting  
    Figure 1 shows what happens when you enter a tinyurl onto the browser. Once the server receives a tinyurl request, it changes the short URL to the long URL with 301 redirect.
 
-   301 redirect - permanent redirect  
-   302 redirect - temporary redirect
+   1. 301 redirect - permanent redirect  
+   A 301 redirect shows that the requested URL is “permanently” moved to the long URL. Since it is permanently redirected, the browser caches the response, and subsequent requests for the same URL will not be sent to the URL shortening service. Instead, requests are redirected to the long URL server directly.
+   1. 302 redirect - temporary redirect
+    A 302 redirect means that the URL is “temporarily” moved to the long URL, meaning that subsequent requests for the same URL will be sent to the URL shortening service first. Then, they are redirected to the long URL server.
+
+    Each redirection method has its pros and cons. If the priority is to reduce the server load, using 301 redirect makes sense as only the first request of the same URL is sent to URL shortening servers. However, if analytics is important, 302 redirect is a better choice as it can track click rate and source of the click more easily.
 
 3. Links will expire after a standard default time span.
 
