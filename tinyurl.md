@@ -58,5 +58,6 @@ To generate a uinqure id, and then convert it to a base 62 number.
 The data we need to store is the long url and its mapping short urls. The data doesn't have strong strong relationship, so no need to use a structured SQL database. And there could be a lot of records to store, so the database needs to be horizontically scalable. The database read operation could be heavy as well. So Non SQL database MongoDB is a good choice for the following reasons:
 1. It uses leader-follower protocol, making it possible to use replicas for heavy reading.
 1. MongoDB ensures atomicity in concurrent write operations and avoids collisions by returning duplicate-key errors for record-duplication issues.
+<img width="947" alt="tiny_url_design" src="https://github.com/toextendmylimits/system_design/assets/10056698/39440c1d-0c13-43c2-b44d-4669813b9589">
 
 
