@@ -39,7 +39,7 @@ https://bytebytego.com/courses/system-design-interview/design-a-rate-limiter
 3. Synchronization issue  
  Centralized data store like Redis
 
-![Uploading Screen Shot 2024-01-06 at 4.04.56 pm.png…]()
+<img width="886" alt="Screen Shot 2024-01-06 at 4 04 56 pm" src="https://github.com/toextendmylimits/system_design/assets/10056698/c0e298ac-eb09-4c5d-8171-7fc795ef7b0b">
 
 ## Key components
 1. Define the rate limiting policy
@@ -107,3 +107,4 @@ After the rate limiter is put in place, it is important to gather analytics data
 1. The rate limiting rules are effective.
 
 For example, if rate limiting rules are too strict, many valid requests are dropped. In this case, we want to relax the rules a little bit. In another example, we notice our rate limiter becomes ineffective when there is a sudden increase in traffic like flash sales. In this scenario, we may replace the algorithm to support burst traffic. Token bucket is a good fit here.
+![Uploading Screen Shot 2024-01-06 at 4.04.56 pm.png…]()
