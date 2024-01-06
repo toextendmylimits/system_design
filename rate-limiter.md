@@ -61,9 +61,9 @@ Choosing an optimal value for the essential parameters is a difficult task.
    1. Otherwise, the request is dropped.  
    1. Requests are pulled from the queue and processed at regular intervals.
   
-Leaking bucket algorithm takes the following two parameters:  
-Bucket size: it is equal to the queue size. The queue holds the requests to be processed at a fixed rate.
-Outflow rate: it defines how many requests can be processed at a fixed rate, usually in seconds.
+   Leaking bucket algorithm takes the following two parameters:  
+   Bucket size: it is equal to the queue size. The queue holds the requests to be processed at a fixed rate.
+   Outflow rate: it defines how many requests can be processed at a fixed rate, usually in seconds.
 
     Pros:  
     1. Memory efficient given the limited queue size.
