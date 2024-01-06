@@ -86,3 +86,13 @@ Choosing an optimal value for the essential parameters is a difficult task.
     Cons:      
     1. Spike in traffic at the edges of a window could cause more requests than the allowed quota to go through.
 6. Sliding window log algorithm
+   1. The algorithm keeps track of request timestamps. Timestamp data is usually kept in cache, such as sorted sets of Redis [8].
+   1. When a new request comes in, remove all the outdated timestamps. Outdated timestamps are defined as those older than the start of the current time window.   
+   1. Add timestamp of the new request to the log.   
+   1. If the log size is the same or lower than the allowed count, a request is accepted. Otherwise, it is rejected.
+
+  Pros:    
+  Rate limiting implemented by this algorithm is very accurate. In any rolling window, requests will not exceed the rate limit.  
+  
+  Cons:    
+  The algorithm consumes a lot of memory because even if a request is rejected, its timestamp might still be stored in memory.
