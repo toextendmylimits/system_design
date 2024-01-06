@@ -33,7 +33,7 @@ In this approach, a server receives a request that is passed through the rate li
 Refer to https://www.educative.io/courses/grokking-modern-system-design-interview-for-engineers-managers/design-of-a-rate-limiter
 https://bytebytego.com/courses/system-design-interview/design-a-rate-limiter
 
-![Uploading Screen Shot 2024-01-06 at 4.04.56 pm.png…]()
+![Uploading Screen Shot 2024-01-06 at 4.04.56 pm.png…]
 
 1. Race condition
  Locks are the most obvious solution for solving race condition. However, locks will significantly slow down the system. Two strategies are commonly used to solve the problem: Lua script [13] and sorted sets data structure in Redis
