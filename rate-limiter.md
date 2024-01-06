@@ -96,3 +96,12 @@ Choosing an optimal value for the essential parameters is a difficult task.
     
     Cons:    
     The algorithm consumes a lot of memory because even if a request is rejected, its timestamp might still be stored in memory.
+
+## Discuss extra
+###Monitoring
+After the rate limiter is put in place, it is important to gather analytics data to check whether the rate limiter is effective. Primarily, we want to make sure:
+
+1. The rate limiting algorithm is effective.
+1. The rate limiting rules are effective.
+
+For example, if rate limiting rules are too strict, many valid requests are dropped. In this case, we want to relax the rules a little bit. In another example, we notice our rate limiter becomes ineffective when there is a sudden increase in traffic like flash sales. In this scenario, we may replace the algorithm to support burst traffic. Token bucket is a good fit here.
