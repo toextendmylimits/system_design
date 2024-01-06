@@ -91,8 +91,8 @@ Choosing an optimal value for the essential parameters is a difficult task.
    1. Add timestamp of the new request to the log.   
    1. If the log size is the same or lower than the allowed count, a request is accepted. Otherwise, it is rejected.
 
-  Pros:    
-  Rate limiting implemented by this algorithm is very accurate. In any rolling window, requests will not exceed the rate limit.  
-  
-  Cons:    
-  The algorithm consumes a lot of memory because even if a request is rejected, its timestamp might still be stored in memory.
+    Pros:    
+    Rate limiting implemented by this algorithm is very accurate. In any rolling window, requests will not exceed the rate limit.  
+    
+    Cons:    
+    The algorithm consumes a lot of memory because even if a request is rejected, its timestamp might still be stored in memory.
