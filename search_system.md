@@ -37,3 +37,9 @@ We can create indexing on a centralized system but it has issues of being single
 ### Design diagram
 
 <img width="662" alt="search_system_design" src="https://github.com/toextendmylimits/system_design/assets/10056698/abc1d96d-ee39-42e5-9f3b-8e80c0125b20">
+
+### Data partitioning
+1. Document partitioning:
+In document partitioning, all the documents collected by the web crawler are partitioned into subsets of documents. Each node then performs indexing on a subset of documents that are assigned to it.
+1. Term partitioning:
+The dictionary of all terms is partitioned into subsets, with each subset residing at a single node. For example, a subset of documents is processed and indexed by a node containing the term “search.”
