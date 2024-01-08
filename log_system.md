@@ -59,7 +59,7 @@ The data does not reside in pub-sub forever and gets deleted after a few days be
 
 New key components identified:  
 1.Filterer:   
-It identifies the application and stores the logs in the blob storage reserved for that application since we do not want to mix logs of two different applications.
+It identifies the application and stores the logs in the blob storage reserved for that application since we do not want to mix logs of two different applications.  
 1.Error aggregator:     
 It is critical to identify an error as quickly as possible. We use a service that picks up the error messages from the pub-sub system and informs the respective client. It saves us the trouble of searching the logs.
 1. Alert aggregator:    
