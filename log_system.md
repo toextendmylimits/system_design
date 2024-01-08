@@ -56,3 +56,14 @@ To fulfill another requirement of low latency, we don’t want the logging to af
 The data does not reside in pub-sub forever and gets deleted after a few days before being stored in archival storage. However, we can utilize the data while it is available in the pub-sub system.  
 
 <img width="1001" alt="logging_system_pub_sub" src="https://github.com/toextendmylimits/system_design/assets/10056698/8c125888-41d8-4858-91dc-9d8ac4be699f">
+
+New key components identified:
+1.Filterer:   
+It identifies the application and stores the logs in the blob storage reserved for that application since we do not want to mix logs of two different applications.
+1.Error aggregator:   
+It is critical to identify an error as quickly as possible. We use a service that picks up the error messages from the pub-sub system and informs the respective client. It saves us the trouble of searching the logs.
+1. Alert aggregator:  
+Alerts are also crucial. So, it is important to be aware of them early. This service identifies the alerts and notifies the appropriate stakeholders if a fatal error is encountered, or sends a message to a monitoring tool.
+
+In our design, we have identified another component called the expiration checker. It is responsible for these tasks:
+Verifying the logs that have to be deleted. Verifying the logs to store in cold storage.
