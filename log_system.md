@@ -21,3 +21,20 @@ Logging is an I/O-intensive operation that is often much slower than CPU operati
 We want our logging system to be scalable. It should be able to handle the increasing amounts of logs over time and a growing number of concurrent users.
 1. Availability:  
 The logging system should be highly available to log the data.
+
+# Design
+## API
+1. Write a message
+write(unique_ID, message_to_be_logged) where unique id contains application id, service id and timestamp
+2. Search
+search(keyword)
+
+## Key components and high-level design
+1. Storage  
+The logs need to be stored somewhere after accumulation. We’ll choose blob storage to save our logs.
+1. Log accumulator:
+An agent that collects logs from each node and dumps them into storage. So, if we want to know about a particular event, we don’t need to visit each node, and we can fetch them from our storage.
+1. Log indexer:  
+The growing number of log files affects the searching ability. The log indexer will use the distributed search to search efficiently.
+1. Visualizer:  
+The visualizer is used to provide a unified view of all the logs.
