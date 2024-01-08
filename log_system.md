@@ -39,6 +39,20 @@ The growing number of log files affects the searching ability. The log indexer w
 1. Visualizer:  
 The visualizer is used to provide a unified view of all the logs.
 
-## High-level design
+## Initial design
 <img width="1005" alt="logging_system" src="https://github.com/toextendmylimits/system_design/assets/10056698/adde2f9d-0d72-4afe-bf9c-8181241a3a39">
 
+There are millions of servers in a distributed system, and using a single log accumulator severely affects scalability. Let’s learn how we’ll scale our system. 
+
+## Improved design using pub-sub system
+Each service will push its data to the log accumulator service. It is responsible for these actions:  
+1. Receiving the logs.
+1. Storing the logs locally.
+1. Pushing the logs to a pub-sub system.
+We use the pub-sub system to cater to our scalability issue. Now, each server has its log accumulator (or multiple accumulators) push the data to pub-sub. The pub-sub system is capable of managing a huge amount of logs.
+
+To fulfill another requirement of low latency, we don’t want the logging to affect the performance of other processes, so we send the logs asynchronously via a low-priority thread. 
+
+The data does not reside in pub-sub forever and gets deleted after a few days before being stored in archival storage. However, we can utilize the data while it is available in the pub-sub system.  
+
+<img width="1001" alt="logging_system_pub_sub" src="https://github.com/toextendmylimits/system_design/assets/10056698/8c125888-41d8-4858-91dc-9d8ac4be699f">
