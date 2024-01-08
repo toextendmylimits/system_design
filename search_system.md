@@ -25,7 +25,7 @@ Builds a searchable indexer
 1. Searcher  
 responds to search queries by running the search query on the index created by the indexer.
 
-How indexer works?
+What does indexer do?
 1. To create index for each document
 Running search queries on billions of documents that are document-level indexed will be a slow process, which may take many minutes, or even hours.
 1. To create inverted index
@@ -38,8 +38,10 @@ We can create indexing on a centralized system but it has issues of being single
 
 <img width="662" alt="search_system_design" src="https://github.com/toextendmylimits/system_design/assets/10056698/abc1d96d-ee39-42e5-9f3b-8e80c0125b20">
 
-### Data partitioning
+### How Indexer works in distributed environment in details
+#### Data partitioning
 1. Document partitioning:
 In document partitioning, all the documents collected by the web crawler are partitioned into subsets of documents. Each node then performs indexing on a subset of documents that are assigned to it.
 1. Term partitioning:
 The dictionary of all terms is partitioned into subsets, with each subset residing at a single node. For example, a subset of documents is processed and indexed by a node containing the term “search.”
+#### 
