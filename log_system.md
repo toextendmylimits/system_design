@@ -32,7 +32,7 @@ search(keyword)
 ## Key components and high-level design
 1. Storage  
 The logs need to be stored somewhere after accumulation. We’ll choose blob storage to save our logs.
-1. Log accumulator:
+1. Log accumulator:  
 An agent that collects logs from each node and dumps them into storage. So, if we want to know about a particular event, we don’t need to visit each node, and we can fetch them from our storage.
 1. Log indexer:  
 The growing number of log files affects the searching ability. The log indexer will use the distributed search to search efficiently.
