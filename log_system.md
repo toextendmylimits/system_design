@@ -5,13 +5,13 @@
 2. How long shall we keep the logs?
 
 ### Funcitional requirement
-1. Write logs
+1. Write logs  
 Different micro services can write logs into the logging system
-1. Store logs
+1. Store logs  
 The logs should reside in a distributed storage for easy access
-1. Search logs
+1. Search logs  
 It should be simple to search logs.
-1. Centralized logging visualizer
+1. Centralized logging visualizer  
 The system should provide a unified view of globally separated services.
 
 ### Non-functional requirement
