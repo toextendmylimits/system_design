@@ -29,7 +29,7 @@ write(unique_ID, message_to_be_logged) where unique id contains application id, 
 2. Search
 search(keyword)
 
-## Key components and high-level design
+## Key components
 1. Storage  
 The logs need to be stored somewhere after accumulation. We’ll choose blob storage to save our logs.
 1. Log accumulator:  
@@ -38,3 +38,7 @@ An agent that collects logs from each node and dumps them into storage. So, if w
 The growing number of log files affects the searching ability. The log indexer will use the distributed search to search efficiently.
 1. Visualizer:  
 The visualizer is used to provide a unified view of all the logs.
+
+## High-level design
+<img width="1005" alt="logging_system" src="https://github.com/toextendmylimits/system_design/assets/10056698/adde2f9d-0d72-4afe-bf9c-8181241a3a39">
+
