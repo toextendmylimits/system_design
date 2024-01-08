@@ -48,6 +48,11 @@ The dictionary of all terms is partitioned into subsets, with each subset residi
 1. Cluster Manager
 1. Mapper
 1. Reducer
+When indexes are created and uploaded to distributed data storage, searcher downloaded to its local storage. 
 ### Data Replication
 
 ## How Searcher workes
+1. In the search phase, when a user query comes in, we run parallel searches on each tiny inverted index stored on the nodes’ local storage generating N queries.
+1. The search result from each inverted tiny index is a mapping list against the queried term (we assume a single word/term user query). The merger aggregates these mapping lists.
+1. After aggregating the mapping lists, the merger sorts the list of documents from the aggregated mapping list based on the frequency of the term in each document.
+1. The sorted list of documents is returned to the user as a search result. The documents are shown in sorted (ascending) order to the user.
