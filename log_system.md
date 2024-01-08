@@ -48,7 +48,7 @@ There are millions of servers in a distributed system, and using a single log ac
 Each service will push its data to the log accumulator service. It is responsible for these actions:  
 1. Receiving the logs.
 1. Storing the logs locally.
-1. Pushing the logs to a pub-sub system.
+1. Pushing the logs to a pub-sub system.  
 We use the pub-sub system to cater to our scalability issue. Now, each server has its log accumulator (or multiple accumulators) push the data to pub-sub. The pub-sub system is capable of managing a huge amount of logs.
 
 To fulfill another requirement of low latency, we don’t want the logging to affect the performance of other processes, so we send the logs asynchronously via a low-priority thread. 
