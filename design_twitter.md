@@ -35,4 +35,6 @@ The reply_type, reply_content, and reply_length parameters are the same as tweet
 
 3. Search Tweet  
 searchTweet(user_id, search_term, max_result, exclude, media_field, expansions, sort_order, next_token, user_location)
-Just explain user_id, search_term, max_result and user_location. 
+Just explain user_id, search_term, max_result and user_location.
+
+## Detailed design 
