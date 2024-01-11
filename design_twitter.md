@@ -4,13 +4,17 @@
 2. What's the scale of the system such how many daily active users we need to support?
 
 ## Functional requirement
-1. Post Tweets: Registered users can post one or more Tweets on Twitter.
-2. Reply to Tweets: Registered users can reply to the public Tweets on Twitter.
-3. Search Tweets: Registered users can search Tweets by typing keywords, hashtags, or usernames in the search bar on Twitter.
-4. Delete Tweets: Registered users can delete one or more of their Tweets on Twitter.
-5. Like or dislike Tweets: Registered users can like and dislike public and their own Tweets on Twitter.
-6. Follow or unfollow the account: Registered users can follow or unfollow other users on Twitter.
-7. Retweet a Tweet: Registered users can Retweet public Tweets of other users on Twitter.
+1. User registration/login/authentication
+2. Post Tweets: Registered users can post one or more Tweets on Twitter.
+3. Reply to Tweets: Registered users can reply to the public Tweets on Twitter.
+4. Follow people
+5. View timeline
+
+Secondary
+7. Search Tweets: Registered users can search Tweets by typing keywords, hashtags, or usernames in the search bar on Twitter.
+8. Delete Tweets: Registered users can delete one or more of their Tweets on Twitter.
+9. Like or dislike Tweets: Registered users can like and dislike public and their own Tweets on Twitter.
+10. Retweet a Tweet: Registered users can Retweet public Tweets of other users on Twitter.
 
 ## Non-functional requirement
 1. Highly available
