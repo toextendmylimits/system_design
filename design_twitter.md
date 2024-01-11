@@ -22,7 +22,17 @@
 <img width="714" alt="twitter_high_level" src="https://github.com/toextendmylimits/system_design/assets/10056698/753f649e-f4de-456e-9824-902c4f20e7f0">
 
 ### APIs
-1. Post Twitter
+1. Post Twitter   
 postTweet(user_id, access_type, tweet_type, content, tweet_length, media_field, post_time, tweet_location, list_of_used_hashtags, list_of_tagged_people)
 user_id
 <img width="840" alt="api_post_twitter" src="https://github.com/toextendmylimits/system_design/assets/10056698/fa50c42e-61ad-4a11-be09-57dd3f7ff0a1">
+
+2. Reply to Tweet  
+The /replyTweet API is used when users reply to public Tweets.
+
+replyTweet(user_id, tweet_id, tweeted_user_id, reply_type, reply_content, reply_length)
+The reply_type, reply_content, and reply_length parameters are the same as tweet_type, content, and tweet_length respectively.
+
+3. Search Tweet  
+searchTweet(user_id, search_term, max_result, exclude, media_field, expansions, sort_order, next_token, user_location)
+Just explain user_id, search_term, max_result and user_location. 
