@@ -7,7 +7,7 @@
 1. User registration/login/authentication
 2. Post Tweets: Registered users can post one or more Tweets on Twitter.
 3. Reply to Tweets: Registered users can reply to the public Tweets on Twitter.
-4. Follow people
+4. Follow & unfollow people
 5. View timeline
 
 Secondary
