@@ -29,6 +29,7 @@ QPS = 2 billion / 86400 = 2000 query per sercond
 
 ![Uploading search_autocomplete_high_level_design.png…]()
 
+![Uploading search_autocomplete_high_level_design.png…]()
 
 Key components:
 1. Suggestion service
