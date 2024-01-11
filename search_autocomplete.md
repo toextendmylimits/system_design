@@ -40,4 +40,11 @@ TO obtains the top ten suggestions from the cache, Redis, and returns them as a 
 
 Furthermore, we also need load balancers to distribute the incoming requests evenly. We also add application servers as entry points for clients so that they can forward requests to the appropriate microservices. These web servers encapsulate the internal system architecture and provide other services, such as authentication, monitoring,
 
+API
+1. get suggestion  
+getSuggestion(query)
+2. Add trending quereis to database
+addToDatabase(query)
+
+## Detailed Design
 
