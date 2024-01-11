@@ -25,4 +25,4 @@
 1. Post Twitter
 postTweet(user_id, access_type, tweet_type, content, tweet_length, media_field, post_time, tweet_location, list_of_used_hashtags, list_of_tagged_people)
 user_id
-<img width="714" alt="post_twitter" src="https://github.com/toextendmylimits/system_design/assets/10056698/e7e34cb6-38ec-4ab9-ae32-1c9fad8fe579">
+<img width="840" alt="api_post_twitter" src="https://github.com/toextendmylimits/system_design/assets/10056698/fa50c42e-61ad-4a11-be09-57dd3f7ff0a1">
