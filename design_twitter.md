@@ -52,7 +52,7 @@ Twitter stores this relationship in the form of a graph. Twitter used FlockDB, a
 <img width="1002" alt="twitter_detailed_design" src="https://github.com/toextendmylimits/system_design/assets/10056698/cd132956-e8b0-46c3-8dae-947b3136f6ec">
 
 ### Key components
-1. Tweet service: 
+1. Tweet service:   
 When end users perform any operation, such as posting a Tweet or liking other Tweets, the load balancers forward these requests to the server handling the Tweet service. Consider an example where users post Tweets on Twitter using the /postTweet API. The server (Tweet service) receives the requests and performs multiple operations. It identifies the attachments (image, video) in the Tweet and stores them in the Blobstore. Text in the Tweets, user information, and all metadata are stored in the different databases (Manhattan, MySQL, PostgreSQL, Vertica). Meanwhile, real-time processing, such as pulling Tweets, user interactions data, and many other metrics from the real-time streams and client logs, is achieved in the Apache Kafka.
 
 Later, the data is moved to the cloud pub-sub through an event processor. Next, data is transferred for deduping and aggregation to the BigQuery through Cloud Dataflow. Finally, data is stored in the Google Cloud Bigtable, which is fully managed, easily scalable, and sorted keys.
