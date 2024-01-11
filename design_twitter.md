@@ -48,6 +48,8 @@ Canssandra
 For images and videos that attache to a tweet
 3. Graph database for followers/followees
 Twitter stores this relationship in the form of a graph. Twitter used FlockDB, a graph database tuned for huge adjacency lists, rapid reads and writes, and so on, along with graph-traversal operations
+4. Kafka  
+Twitter evaluates around 400 billion real-time events and generates petabytes of data every day. For this, it processes events using Kafka
 
 <img width="1002" alt="twitter_detailed_design" src="https://github.com/toextendmylimits/system_design/assets/10056698/cd132956-e8b0-46c3-8dae-947b3136f6ec">
 
