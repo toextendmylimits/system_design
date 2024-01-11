@@ -26,10 +26,7 @@ Let's assume there are 2 billion unique queries a day, and each query has 30 cha
 QPS = 2 billion / 86400 = 2000 query per sercond
 
 ## High-level Design
-
-![Uploading search_autocomplete_high_level_design.png…]()
-
-![Uploading search_autocomplete_high_level_design.png…]()
+<img width="862" alt="search_autocomplete_high_level" src="https://github.com/toextendmylimits/system_design/assets/10056698/c0880692-d069-440b-8ca5-5f2bdd378a0d">
 
 Key components:
 1. Suggestion service
