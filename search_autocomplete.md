@@ -28,10 +28,16 @@ QPS = 2 billion / 86400 = 2000 query per sercond
 ## High-level Design
 <img width="862" alt="search_autocomplete_high_level" src="https://github.com/toextendmylimits/system_design/assets/10056698/c0880692-d069-440b-8ca5-5f2bdd378a0d">
 
+Our proposed system should do the following:  
+1. Provide suggestions based on the search history of the user.  
+1. Store all the new and trending queries in the database to include them in the list of suggestions.  
+
 Key components:
 1. Suggestion service
-Provide suggestions based on user's search history and what's the relevant trending search query
+TO obtains the top ten suggestions from the cache, Redis, and returns them as a response to the client.
 2. Assembler
-Store all the new and trending queries in the database to include them in the list of suggestions.
+ An assembler collects the user searches, applies some analytics to rank the searches, and stores them in a NoSQL database that’s distributed across several nodes.
+
+Furthermore, we also need load balancers to distribute the incoming requests evenly. We also add application servers as entry points for clients so that they can forward requests to the appropriate microservices. These web servers encapsulate the internal system architecture and provide other services, such as authentication, monitoring,
 
 
