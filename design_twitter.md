@@ -37,8 +37,7 @@ The /replyTweet API is used when users reply to public Tweets.
 replyTweet(user_id, tweet_id, tweeted_user_id, reply_type, reply_content, reply_length)
 The reply_type, reply_content, and reply_length parameters are the same as tweet_type, content, and tweet_length respectively.
 
-3. Search Tweet  
-searchTweet(user_id, search_term, max_result, exclude, media_field, expansions, sort_order, next_token, user_location)
-Just explain user_id, search_term, max_result and user_location.
+3. view timeline
+viewTimeline
 
 ## Detailed design 
