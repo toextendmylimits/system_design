@@ -18,3 +18,13 @@ than 160 ms, but it shouldn't too high as otherwise a suggestion might be stale 
 The system should be available to provide suggestions despite the failure of one or more of its components.
 3. Scalable  
 The system should support the ever-increasing number of users over time.
+
+### Resource estimation Storage/QPS/Servers
+Let's assume there are 2 billion unique queries a day, and each query has 30 characters, and each character is of 2 Bytes, then the storage for a day is:  
+2 billion * 30 charcters * 2 Bytes = 120GB per day, storage per year is probably 40 TB.
+
+QPS = 2 billion / 86400 = 2000 query per sercond
+
+## High-level Design
+![Uploading search_autocomplete_high_level_design.png…]()
+
