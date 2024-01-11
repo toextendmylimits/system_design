@@ -78,3 +78,7 @@ This service is responsible for creating or updating tries. It stores these new 
 The trie is updated from the aggregated data in the Cassandra database. The existing snapshot of a trie is updated with all the new terms and their corresponding frequencies. Otherwise, a new trie is created using the data in the Cassandra database.
 
 Once a trie is created or updated, the system makes it available for the suggestion service.
+
+## Further to discuss
+### Personalization
+Users receive typeahead suggestions based on their previous searches, location, language, and other factors. We can save each user’s personal history on the server separately and cache it on the client. Before transmitting the final set to the user, the server might include these customized phrases. Personalized searches should always take precedence over other types of searches.
