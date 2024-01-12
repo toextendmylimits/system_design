@@ -12,11 +12,13 @@
 ### Functional requirements
 1. Chat 
 Support one-on-one and group chat
-2. Sharing:  
+2.Acknowledgment:  
+The system should support message delivery acknowledgment, such as sent, delivered, and read.
+3. Sharing:  
 The system should support sharing of media files, such as images, videos, and audio.
-3. Chat storage:  
+4. Chat storage:  
 The system must support the persistent storage of chat messages when a user is offline until the successful delivery of messages.
-4. Push notifications:  
+5. Push notifications:  
 The system should be able to notify offline users of new messages once their status becomes online.
 
 ### Non-functional requirements
