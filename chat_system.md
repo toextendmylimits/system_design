@@ -18,3 +18,18 @@ The system should support sharing of media files, such as images, videos, and au
 The system must support the persistent storage of chat messages when a user is offline until the successful delivery of messages.
 4. Push notifications:  
 The system should be able to notify offline users of new messages once their status becomes online.
+
+### Non-functional requirements
+1. Availability
+2. Scalibility
+3. Low latency
+4. Security
+
+### Resource estmiation
+Let's assume 100 billion messages a day, and each message is of 100Bytes on aveerage.
+1. Storage estimation
+For a day: 100 billion * 100 Bytes = 10 TB / day
+
+## High-level design
+<img width="812" alt="chat_high_level" src="https://github.com/toextendmylimits/system_design/assets/10056698/fc489c9f-7420-4c90-84d2-1317c05d9dee">
+
