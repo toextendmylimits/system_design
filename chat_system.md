@@ -35,3 +35,22 @@ For a day: 100 billion * 100 Bytes = 10 TB / day
 ## High-level design
 <img width="812" alt="chat_high_level" src="https://github.com/toextendmylimits/system_design/assets/10056698/fc489c9f-7420-4c90-84d2-1317c05d9dee">
 
+### API
+1. Send message  
+The sendMessage API is as follows:
+
+sendMessage(message_ID, sender_ID, reciever_ID, type, text=none, media_object=none, document=none)
+
+2. Get message  
+
+getMessage(user_Id)
+Using this API call, users can fetch all unread messages when they come online after being offline for some time.
+
+3. Upload media or document file#  
+The uploadFile API is as follows:
+We can upload media files via the uploadFile API by making a POST request to the /v1/media API endpoint. A successful response returns an ID that’s forwarded to the receiver.
+
+4. Download a document or media file  
+The downloadFile API is as follows:
+
+downloadFile(user_id, file_id)
