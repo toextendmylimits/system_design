@@ -54,3 +54,6 @@ We can upload media files via the uploadFile API by making a POST request to the
 The downloadFile API is as follows:
 
 downloadFile(user_id, file_id)
+
+## Detailed design
+
