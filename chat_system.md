@@ -67,3 +67,9 @@ In WhatsApp, each active device is connected with a WebSocket server via WebSock
 3. Send or receive media files
 <img width="849" alt="upload_media_file" src="https://github.com/toextendmylimits/system_design/assets/10056698/60353e8f-bbb7-4f4e-bd2b-0adf7f705f5d">
 
+4. Support group message
+<img width="938" alt="group_message" src="https://github.com/toextendmylimits/system_design/assets/10056698/1a35f6ee-c8d2-4cc4-8ce4-c705616d7860">
+
+Overall design  
+<img width="939" alt="overall_design" src="https://github.com/toextendmylimits/system_design/assets/10056698/63feb490-175d-4211-bf39-ea0467447166">
+
