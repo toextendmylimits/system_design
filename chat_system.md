@@ -64,3 +64,6 @@ In WhatsApp, each active device is connected with a WebSocket server via WebSock
 2. Send or receive messages
 <img width="830" alt="send_receive_message" src="https://github.com/toextendmylimits/system_design/assets/10056698/516b8de9-1bdb-405e-9502-4f9c745f1359">
 
+3. Send or receive media files
+<img width="849" alt="upload_media_file" src="https://github.com/toextendmylimits/system_design/assets/10056698/60353e8f-bbb7-4f4e-bd2b-0adf7f705f5d">
+
