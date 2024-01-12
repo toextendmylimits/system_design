@@ -56,4 +56,10 @@ The downloadFile API is as follows:
 downloadFile(user_id, file_id)
 
 ## Detailed design
+How does the system support billions of users?
+1. Connection with a WebSocket server
+<img width="839" alt="chat_websocket" src="https://github.com/toextendmylimits/system_design/assets/10056698/18f5921a-981b-4c34-9237-d8b3fd5f1053">
+In WhatsApp, each active device is connected with a WebSocket server via WebSocket protocol. A WebSocket server keeps the connection open with all the active (online) users. Since one server isn’t enough to handle billions of devices, there should be enough servers to handle billions of users. The responsibility of each of these servers is to provide a port to every online user. The mapping between servers, ports, and users is stored in the WebSocket manager that resides on top of a cluster of the data store. In this case, that’s Redis.
+
+2. Send or receive messages
 
