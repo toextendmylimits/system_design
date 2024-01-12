@@ -62,4 +62,5 @@ How does the system support billions of users?
 In WhatsApp, each active device is connected with a WebSocket server via WebSocket protocol. A WebSocket server keeps the connection open with all the active (online) users. Since one server isn’t enough to handle billions of devices, there should be enough servers to handle billions of users. The responsibility of each of these servers is to provide a port to every online user. The mapping between servers, ports, and users is stored in the WebSocket manager that resides on top of a cluster of the data store. In this case, that’s Redis.
 
 2. Send or receive messages
+<img width="830" alt="send_receive_message" src="https://github.com/toextendmylimits/system_design/assets/10056698/516b8de9-1bdb-405e-9502-4f9c745f1359">
 
