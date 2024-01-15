@@ -26,6 +26,8 @@ Not scalable. If events are coming with a high rate, single host will quickly be
 
 ### Multi host
 How do we achieve this? One of the options is to introduce a load balancer.
+<img width="1148" alt="top_k_hash_table_multi_host" src="https://github.com/toextendmylimits/system_design/assets/10056698/844c135f-b093-45f8-80a5-d1308b2bf36b">
+
 
 Each event then goes to one of the hosts in a cluster. Let's call them Processor hosts. And because the same video identifier may appear on different Processor hosts, each
 Processor needs to flush accumulated data to a single Storage host. It is a bit better now, we can process events in parallel.
