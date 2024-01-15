@@ -4,6 +4,16 @@
 2. How long is the ID?
 3. Does the ID get increased by time, for example, the ID generated in the evening is larger than ID generated in the morning on the same day?  Are the IDs ordered by date?  
 4. What's the scale of the system, like how many IDs the system can generate in a second?
+
+## Functional requirement
+1. Number of 64 bits
+2. Unique
+3. Increased by time
+
+## Non-functional requirement
+1. Available
+2. Scalable
+3. Low latency
 ## Design
 1. SQL database auto-increment feature
    1. Single database server
