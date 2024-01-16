@@ -30,3 +30,34 @@ Request count
 Memory usage
 
 Message count in message queues
+
+### Non-Functional requirements
+1. Available
+2. Scalable
+3. Low Latency
+
+## High-level design
+
+### Main components
+1. Data collection: collect metric data from different sources.
+1. Data transmission: transfer data from sources to the metrics monitoring system.
+1. Data storage: organize and store incoming data.
+1. Alerting: analyze incoming data, detect anomalies, and generate alerts. The system must be able to send alerts to different communication channels.
+1. Visualization: present data in graphs, charts, etc. Engineers are better at identifying patterns, trends, or problems when data is presented visually, so we need visualization functionality.
+
+### Data model
+A metric name, a list of tag/labels, a list of timestamp and values
+CPU.load host=webserver01,region=us-west 1613707265 76
+
+### Data storage system
+Time series database
+
+### Design diagram
+<img width="1090" alt="byte_metric_high_level_design" src="https://github.com/toextendmylimits/system_design/assets/10056698/47c014f8-cf10-4c31-a076-2d4047195d46">
+
+1. Metrics source. This can be application servers, SQL databases, message queues, etc.
+1. Metrics collector. It gathers metrics data and writes data into the time-series database.
+1. Time-series database. This stores metrics data as time series. It usually provides a custom query interface for analyzing and summarizing a large amount of time-series data. It maintains indexes on labels to facilitate the fast lookup of time-series data by labels.
+1. Query service. The query service makes it easy to query and retrieve data from the time-series database. This should be a very thin wrapper if we choose a good time-series database. It could also be entirely replaced by the time-series database’s own query interface.
+1. Alerting system. This sends alert notifications to various alerting destinations.
+1. Visualization system. This shows metrics in the form of various graphs/charts.
