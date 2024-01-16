@@ -71,16 +71,16 @@ There are two ways metrics data can be collected, pull or push.
 1. Pull
 A list of metric collectors pull data from different source.
 
-  1. Zookeeper
-  Use Apache Zoopkeeper for service delivery. Service discovery contains configuration rules about when and where to collect metrics 
-  
-  The metrics collector fetches configuration metadata of service endpoints from Service Discovery. Metadata include pulling interval, IP addresses, timeout and retry parameters, etc.
-  
-  The metrics collector pulls metrics data via a pre-defined HTTP endpoint (for example, /metrics). To expose the endpoint, a client library usually needs to be added to the service. In Figure 10, the service is Web Servers.
-  
-  Optionally, the metrics collector registers a change event notification with Service Discovery to receive an update whenever the service endpoints change. Alternatively, the metrics collector can poll for endpoint changes periodically.
-  
-  1. Consitent hash for assigning metrics collectors
-  At our scale, a single metrics collector will not be able to handle thousands of servers. We must use a pool of metrics collectors to handle the demand.One common problem when there are multiple collectors is that multiple instances might try to pull data from the same resource and produce duplicate data. There must exist some coordination scheme among the instances to avoid this.
-  
-  One potential approacho designate each collector to a range in a consistent hash ring, and then map every single server being monitored by its unique name in the hash ring.
+    1. Zookeeper
+    Use Apache Zoopkeeper for service delivery. Service discovery contains configuration rules about when and where to collect metrics 
+    
+    The metrics collector fetches configuration metadata of service endpoints from Service Discovery. Metadata include pulling interval, IP addresses, timeout and retry parameters, etc.
+    
+    The metrics collector pulls metrics data via a pre-defined HTTP endpoint (for example, /metrics). To expose the endpoint, a client library usually needs to be added to the service. In Figure 10, the service is Web Servers.
+    
+    Optionally, the metrics collector registers a change event notification with Service Discovery to receive an update whenever the service endpoints change. Alternatively, the metrics collector can poll for endpoint changes periodically.
+    
+    1. Consitent hash for assigning metrics collectors
+    At our scale, a single metrics collector will not be able to handle thousands of servers. We must use a pool of metrics collectors to handle the demand.One common problem when there are multiple collectors is that multiple instances might try to pull data from the same resource and produce duplicate data. There must exist some coordination scheme among the instances to avoid this.
+    
+    One potential approacho designate each collector to a range in a consistent hash ring, and then map every single server being monitored by its unique name in the hash ring.
