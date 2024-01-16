@@ -11,7 +11,7 @@
 
 ### Functional requirements
 1. Chat 
-Support one-on-one and group chat
+Support one-on-one and group chat  
 2.Acknowledgment:  
 The system should support message delivery acknowledgment, such as sent, delivered, and read.
 3. Sharing:  
