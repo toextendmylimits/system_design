@@ -93,9 +93,84 @@ In a push model, a collection agent is commonly installed on every server being 
 1. Pull or push?
 
 - Easy debugging	
-The /metrics endpoint on application servers used for pulling metrics can be used to view metrics at any time. You can even do this on your laptop. Pull wins.
-
-If the metrics collector doesn’t receive metrics, the problem might be caused by network issues.
+    The /metrics endpoint on application servers used for pulling metrics can be used to view metrics at any time. You can even do this on your laptop. Pull wins.
+    
+    If the metrics collector doesn’t receive metrics, the problem might be caused by network issues.
 
 - Short-lived jobs		
-Some of the batch jobs might be short-lived and don’t last long enough to be pulled. Push wins. This can be fixed by introducing push gateways for the pull model 
+    Some of the batch jobs might be short-lived and don’t last long enough to be pulled. Push wins. This can be fixed by introducing push gateways for the pull model 
+
+- Firewall or complicated network setups	
+    Having servers pulling metrics requires all metric endpoints to be reachable. This is potentially problematic in multiple data center setups. It might require a more elaborate network infrastructure.
+    
+    If the metrics collector is set up with a load balancer and an auto-scaling group, it is possible to receive data from anywhere. Push wins.
+
+- Data authenticity	
+    Application servers to collect metrics from are defined in config files in advance. Metrics gathered from those servers are guaranteed to be authentic.
+    
+    Any kind of client can push metrics to the metrics collector. This can be fixed by whitelisting servers from which to accept metrics, or by requiring authentication.
+
+### Scale the metrics transmission pipeline
+However, there is a risk of data loss if the time-series database is unavailable. To mitigate this problem, we introduce a queueing component 
+
+This approach has several advantages:
+
+- Kafka is used as a highly reliable and scalable distributed messaging platform.
+- It decouples the data collection and data processing services from each other.
+- It can easily prevent data loss when the database is unavailable, by retaining the data in Kafka.
+
+#### Scale through Kafka
+There are a couple of ways that we can leverage Kafka’s built-in partition mechanism to scale our system.
+
+- Configure the number of partitions based on throughput requirements.
+- Partition metrics data by metric names, so consumers can aggregate data by metrics names.
+- Further partition metrics data with tags/labels.
+- Categorize and prioritize metrics so that important metrics can be processed first.
+
+#### Where aggregations can happen
+Metrics can be aggregated in different places; in the collection agent (on the client-side), the ingestion pipeline (before writing to storage), and the query side (after writing to storage). Let’s take a closer look at each of them.
+
+Collection agent. The collection agent installed on the client-side only supports simple aggregation logic. For example, aggregate a counter every minute before it is sent to the metrics collector.
+
+Ingestion pipeline. To aggregate data before writing to the storage, we usually need stream processing engines such as Flink. The write volume will be significantly reduced since only the calculated result is written to the database. However, handling late-arriving events could be a challenge and another downside is that we lose data precision and some flexibility because we no longer store the raw data.
+
+Query side. Raw data can be aggregated over a given time period at query time. There is no data loss with this approach, but the query speed might be slower because the query result is computed at query time and is run against the whole dataset.
+
+### Query service
+The query service comprises a cluster of query servers, which access the time-series databases and handle requests from the visualization or alerting systems. Having a dedicated set of query servers decouples time-series databases from the clients (visualization and alerting systems). And this gives us the flexibility to change the time-series database or the visualization and alerting systems, whenever needed.
+
+Cache layer
+To reduce the load of the time-series database and make query service more performant, cache servers are added to store query results, as shown in Figure 17.
+
+### Storage layer
+1. Data encoding and compression
+1. Downsampling
+Downsampling is the process of converting high-resolution data to low-resolution to reduce overall disk usage. Since our data retention is 1 year, we can downsample old data. For example, we can let engineers and data scientists define rules for different metrics. Here is an example:
+
+Retention: 7 days, no sampling
+
+Retention: 30 days, downsample to 1-minute resolution
+
+Retention: 1 year, downsample to 1-hour resolution
+
+1. Cold storage
+Cold storage is the storage of inactive data that is rarely used. The financial cost for cold storage is much lower
+
+### Alerting system
+
+<img width="1098" alt="byte_metric_alert_system" src="https://github.com/toextendmylimits/system_design/assets/10056698/72c56791-2a53-4cd8-ad61-2b6758ef2f5f">
+1. Load config files to cache servers. Rules are defined as config files on the disk. 
+2. The alert manager fetches alert configs from the cache.
+3. Based on config rules, the alert manager calls the query service at a predefined interval. If the value violates the threshold, an alert event is created. The alert manager is responsible for the following:
+- Filter, merge, and dedupe alerts.
+- Access control. To avoid human error and keep the system secure, it is essential to restrict access to certain alert management operations to authorized individuals only.
+- Retry. The alert manager checks alert states and ensures a notification is sent at least once.
+4. The alert store is a key-value database, such as Cassandra, that keeps the state (inactive, pending, firing, resolved) of all alerts. It ensures a notification is sent at least once.
+5. Eligible alerts are inserted into Kafka.
+6. Alert consumers pull alert events from Kafka.
+7. Alert consumers process alert events from Kafka and send notifications over to different channels such as email, text message, PagerDuty, or HTTP endpoints.
+
+## Final design
+<img width="1154" alt="byte_metric_final_design" src="https://github.com/toextendmylimits/system_design/assets/10056698/e30e62b8-e7c2-4bc2-96de-7be553d92285">
+
+
