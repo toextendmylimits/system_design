@@ -64,6 +64,8 @@ Billions of searches every day give us hundreds of thousands of queries per seco
 
 One way to update the trie to have one primary copy and several secondary copies of the trie. While the main copy is used to answer the queries, we may update the secondary copy. We may also make the secondary our main copy once the upgrade is complete. We can then upgrade our previous primary, which will then be able to serve the traffic as well.
 
+We can put up a MapReduce (MR) job to process all of the logging data regularly, let’s say every 15 minutes. These MR services calculate the frequency of all the searched phrases in the previous 15 minutes and dump the results into a hash table in a database like Cassandra. After that, we may further update the trie with the new data. We can update the current copy of the trie with all of the new words and their frequencies. We should perform this offline because our priority is to provide suggestions to users instead of keeping them waiting.
+
 ## Detailed design
 <img width="1061" alt="search_autocomplete_high_level_detailed_design" src="https://github.com/toextendmylimits/system_design/assets/10056698/02f488c5-c2fc-445c-8290-ad0350bc63ec">
 
