@@ -41,7 +41,7 @@ https://bytebytego.com/courses/system-design-interview/design-a-rate-limiter
 
 <img width="886" alt="Screen Shot 2024-01-06 at 4 04 56 pm" src="https://github.com/toextendmylimits/system_design/assets/10056698/c0e298ac-eb09-4c5d-8171-7fc795ef7b0b">
 
-## Key components
+### Key components
 1. Define the rate limiting policy
 The first step is to determine the policy for rate limiting. This policy should include the maximum number of requests allowed per unit of time, the time window for measuring requests, and the actions to be taken when a limit is exceeded (e.g., return an error code or delay the request).
    1. Rules database
@@ -51,7 +51,25 @@ The first step is to determine the policy for rate limiting. This policy should 
 The rate limiter API should keep track of the number of requests made by each client. One way to do this is to use in memory cache like Redis. It is quick and supports the already implemented time-based expiration technique.
 1. Client identifier builder:
 This component generates a unique ID for a request received from a client. This could be a remote IP address, login ID, or a combination of several other attributes, due to which a sequencer can’t be used here. This ID is considered as a key to store the user data in the key-value database. So, this key is passed to the decision-maker for further service decisions.
-## Algorithms
+
+Rule database: This is the database, consisting of rules defined by the service owner. Each rule specifies the number of requests allowed for a particular client per unit of time.
+
+Rules retriever: This is a background process that periodically checks for any modifications to the rules in the database. The rule cache is updated if there are any modifications made to the existing rules.
+
+Throttle rules cache: The cache consists of rules retrieved from the rule database. The cache serves a rate-limiter request faster than persistent storage. As a result, it increases the performance of the system. So, when the rate limiter receives a request against an ID (key), it checks the ID against the rules in the cache.
+
+Decision-maker: This component is responsible for making decisions against the rules in the cache. This component works based on one of the rate-limiting algorithms that are discussed in the next lesson.
+
+Client identifier builder: This component generates a unique ID for a request received from a client. This could be a remote IP address, login ID, or a combination of several other attributes, due to which a sequencer can’t be used here. This ID is considered as a key to store the user data in the key-value database. So, this key is passed to the decision-maker for further service decisions.
+
+In case the predefined limit is crossed, APIs return an HTTP response code 429 Too Many Requests, and one of the following strategies is applied to the request:
+
+Drop the request and return a specific response to the client, such as “too many requests” or “service unavailable.”
+If some requests are rate limited due to a system overload, we can keep those requests in a queue to be processed later.
+
+## Detailed design/dive deep 
+
+### Algorithms
 1. Token bucket algorithm
 Pros:
 This algorithm allows a burst of traffic as long as there are enough tokens in the bucket.
