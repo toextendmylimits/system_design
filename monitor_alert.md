@@ -84,3 +84,18 @@ A list of metric collectors pull data from different source.
     At our scale, a single metrics collector will not be able to handle thousands of servers. We must use a pool of metrics collectors to handle the demand.One common problem when there are multiple collectors is that multiple instances might try to pull data from the same resource and produce duplicate data. There must exist some coordination scheme among the instances to avoid this.
     
     One potential approacho designate each collector to a range in a consistent hash ring, and then map every single server being monitored by its unique name in the hash ring.
+
+1. Push
+In a push model, a collection agent is commonly installed on every server being monitored. A collection agent is a piece of long-running software that collects metrics from the services running on the server and pushes those metrics periodically to the metrics collector. The collection agent may also aggregate metrics (especially a simple counter) locally, before sending them to metric collectors.
+
+<img width="1047" alt="byte_metric_push" src="https://github.com/toextendmylimits/system_design/assets/10056698/b7f2f595-02a0-4010-a89d-4d623c7a9993">
+
+1. Pull or push?
+
+- Easy debugging	
+The /metrics endpoint on application servers used for pulling metrics can be used to view metrics at any time. You can even do this on your laptop. Pull wins.
+
+If the metrics collector doesn’t receive metrics, the problem might be caused by network issues.
+
+- Short-lived jobs		
+Some of the batch jobs might be short-lived and don’t last long enough to be pulled. Push wins. This can be fixed by introducing push gateways for the pull model 
